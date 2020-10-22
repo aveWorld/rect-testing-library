@@ -7,10 +7,11 @@ import { toJS } from 'mobx';
 
 type Props = {
   viewStore: Object,
-}
+};
 
 const DropDown = (props: Props) => {
   const { viewStore } = props;
+  console.log(props);
   const network = toJS(viewStore.currentNetwork);
 
   return (
@@ -19,6 +20,7 @@ const DropDown = (props: Props) => {
       onChange={(e) => viewStore.selectNetwork(e)}
       value={network}
       placeholder="Select an option"
+      data-testid="dropdown"
     />
   );
 };

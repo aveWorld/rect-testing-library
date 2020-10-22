@@ -4,7 +4,7 @@ import * as React from 'react';
 import { nanoid } from 'nanoid';
 
 type Props = {
-  links: Array<Object>
+  links: Array<Object>,
 };
 
 const NavBar = (props: Props) => {

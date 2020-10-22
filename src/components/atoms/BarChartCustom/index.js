@@ -1,24 +1,19 @@
 // @flow
 import React from 'react';
-import {
-  BarChart,
-  Bar,
-  ResponsiveContainer,
-  Tooltip,
-} from 'recharts';
+import { BarChart, Bar, ResponsiveContainer, Tooltip } from 'recharts';
 
 // Colors
 import * as colors from '../../../styles/utilities/_variables.scss';
 
 type Props = {
-  data: Array;
+  data: Array,
   dataMeasure?: string,
   tooltipFilter?: Function,
-}
+};
 
 const BarChartCustom = (props: Props) => {
   const { data, dataMeasure, tooltipFilter } = props;
-
+  // console.log(data);
   const customFormatter = (value) => {
     const unit = dataMeasure || 'data';
     const item = tooltipFilter ? tooltipFilter(value) : value;
@@ -28,15 +23,17 @@ const BarChartCustom = (props: Props) => {
 
   return (
     <ResponsiveContainer width="100%" height={124}>
-      {data.length > 0
-        ? (
-          <BarChart data={data}>
-            <Bar dataKey="amt" fill={colors.barChart} barSize={2} />
-            <Tooltip formatter={(value) => customFormatter(value)} labelFormatter={() => undefined} />
-          </BarChart>
-        ) : (
-          <div />
-        )}
+      {data.length > 0 ? (
+        <BarChart data={data}>
+          <Bar dataKey="amt" fill={colors.barChart} barSize={2} />
+          <Tooltip
+            formatter={(value) => customFormatter(value)}
+            labelFormatter={() => undefined}
+          />
+        </BarChart>
+      ) : (
+        <div />
+      )}
     </ResponsiveContainer>
   );
 };
